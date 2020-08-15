@@ -10,4 +10,5 @@ var msg=function(value,message,type){
       }
     }
 }
+
 export default msg;

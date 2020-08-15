@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Msg from './commons/msg'
+import Datetime from './commons/datetime'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
@@ -30,3 +31,5 @@ Vue.prototype.$throw = (error)=> errorHandler(error,this);
 
 //通用提示框
 Vue.prototype.msg = Msg;
+//通用时间格式化
+Vue.prototype.formatDate = Datetime;

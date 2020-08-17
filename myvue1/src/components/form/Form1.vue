@@ -8,8 +8,7 @@
       </el-form-item>
       <el-form-item label="活动区域">
         <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
+          <el-option v-for="(region,index) in regions" :key="index" :label="region.name" :value="region.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="活动时间">
@@ -55,6 +54,7 @@ export default {
     return {
       checkboxs: [{id:1,name: "美食/餐厅线上活动"},{id:2,name: "地推活动"},{id:3,name: "线下主题活动"},{id:4,name: "单纯品牌曝光"}],
       radios: [{id:0,name: "线上品牌商赞助"},{id:1,name: "线下场地免费"}], 
+      regions: [{id:"shanghai",name:"区域一"},{id:"beijing",name:"区域二"}],
       form: {
           name: '',
           region: '',
@@ -70,6 +70,7 @@ export default {
   methods: {
       onSubmit() {
         console.log(this.form.type);
+        console.log("region: " + this.form.region);
         console.log("radio: " + this.form.resource);
       }
     }

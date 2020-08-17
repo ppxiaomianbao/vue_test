@@ -7,6 +7,7 @@ import Icon1 from '../components/Icon/Icon1'
 import Control1 from '../components/selectControl/Control1'
 import Input1 from '../components/input/Input1'
 import Datetime1 from '../components/datetime/Datetime1'
+import Upload1 from '../components/upload/Upload1'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/datetime1',
       name: 'datetime1',
       component: Datetime1
+    },
+    {
+      path: '/upload1',
+      name: 'upload1',
+      component: Upload1
     }
   ]
 })

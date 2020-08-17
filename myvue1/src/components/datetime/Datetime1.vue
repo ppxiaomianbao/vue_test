@@ -23,7 +23,7 @@
 
   <br>
   <el-button type="primary" @click="test_click()" icon="el-icon-search">点击</el-button>
-
+  <el-button type="text" @click="open">点击打开 Message Box</el-button>
   
   </div>
 </template>
@@ -32,37 +32,27 @@
 export default {
   data () {
     return {
-      value1: '',
+      value1: null,
       value2: '',
     }
   },
   methods: {
     test_click: function(){
-      console.log("value1: " + this.formatDate(this.value1, 'yyyy-MM-dd hh:mm:ss'));
-      console.log("value2: " + this.value2);
+      let va1 = this.formatDate(this.value1, 'yyyy-MM-dd hh:mm:ss');
+      let va2 = this.formatDate(this.value2, 'yyyy-MM-dd hh:mm:ss');
+      console.log("value1: " + va1);
+      console.log("value2: " + va2);
+    },
+    open: function(){
+      this.$confirm('此操作将展示当前选中的时间，是否展示?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.msg('',this.formatDate(this.value1, 'yyyy-MM-dd hh:mm:ss'),null);
+        }).catch(() => {
+        });
     }
-  //   formatDate: function (date, fmt) {
-  //   if (/(y+)/.test(fmt)) {
-  //       fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
-  //   }
-  //   let o = {
-  //       'M+': date.getMonth() + 1,
-  //       'd+': date.getDate(),
-  //       'h+': date.getHours(),
-  //       'm+': date.getMinutes(),
-  //       's+': date.getSeconds()
-  //   };
-  //   for (let k in o) {
-  //       if (new RegExp(`(${k})`).test(fmt)) {
-  //           let str = o[k] + '';
-  //           fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : this.padLeftZero(str));
-  //       }
-  //   }
-  //   return fmt;
-  // },
-  // padLeftZero: function (str) {
-  //   return ('00' + str).substr(str.length);
-  // }
 }
 }
 </script>

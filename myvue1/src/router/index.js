@@ -8,6 +8,8 @@ import Control1 from '../components/selectControl/Control1'
 import Input1 from '../components/input/Input1'
 import Datetime1 from '../components/datetime/Datetime1'
 import Upload1 from '../components/upload/Upload1'
+import Table1 from '../components/table/Table1'
+import Form1 from '../components/form/Form1'
 
 Vue.use(Router)
 
@@ -53,6 +55,16 @@ export default new Router({
       path: '/upload1',
       name: 'upload1',
       component: Upload1
+    },
+    {
+      path: '/table1',
+      name: 'table1',
+      component: Table1
+    },
+    {
+      path: '/form1',
+      name: 'form1',
+      component: Form1
     }
   ]
 })

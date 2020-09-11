@@ -7,19 +7,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Msg from './commons/msg'
 import Datetime from './commons/datetime'
+//导入请求框架
+import api from './api'
+import axios from 'axios';
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
-
 //系统错误捕获
 const errorHandler = (error, vm)=>{
   console.error('抛出全局异常: 【' + error + '】');
@@ -34,3 +28,18 @@ Vue.prototype.$throw = (error)=> errorHandler(error,this);
 Vue.prototype.msg = Msg;
 //通用时间格式化
 Vue.prototype.formatDate = Datetime;
+
+//全局设置网络超时时间
+axios.defaults.timeout = 30000;
+
+//使用api
+Vue.use(api);
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+

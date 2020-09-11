@@ -60,44 +60,43 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data () {
     return {
+      repositoryUrl : 'http://localhost:8088/swagger-ui.html',
+      repositoryName : '',
       dialogTableVisible: false,
-      tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '北京',
-          city: '朝阳区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-04',
-          name: '赵小龙',
-          province: '广州',
-          city: '西湖区',
-          address: '上海市普陀区金沙江路 1517 弄1',
-          zip: 200333
-        }, {
-          date: '2016-05-01',
-          name: '李麻子',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1519 弄2',
-          zip: 200333
-        }, {
-          date: '2016-05-03',
-          name: '张三',
-          province: '武汉',
-          city: '新洲区',
-          address: '上海市普陀区金沙江路 1516 弄3',
-          zip: 200333
-        }],
-        gridData: []
+      tableData: [],
+      gridData: []
       }
+  },
+  mounted() {
+      // 发ajax请求，用以获取数据
+      // const url = 'http://localhost:8088/vueTable/getList';
+      // axios.get(url).then(
+      //     response => {
+      //       debugger;
+      //         const result = response.data.respData.list[0];
+      //         console.log(result)
+      //         this.tableData = response.data.respData.list;
+      //         this.repositoryName = result.name;
+      //     }
+      // ).catch(
+      //     response => {
+      //         this.$message.error("接口异常");
+      //     },
+      // );
+      this.$fetch.api_user
+          .getList({})
+              .then(({ code, message, respData}) => {
+                debugger;
+                  this.tableData = respData.list;
+              })
   },
   methods: {
     handleClick(row) {
+      
       this.dialogTableVisible = true;
       this.gridData = [{
         date: row.date,

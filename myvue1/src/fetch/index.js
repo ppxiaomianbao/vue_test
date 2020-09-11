@@ -1,11 +1,6 @@
 //倒入模块
 
 import axios from 'axios'
-import Qs from 'qs'
-import router from '../router'
-import {
-  Message
-} from 'element-ui'
 export default function fetch(options) {
   // var baseURLStr = window.g.SERVICE_CONTEXT_PATH;
   return new Promise((resolve, reject) => {

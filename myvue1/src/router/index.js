@@ -16,14 +16,16 @@ import Menu1 from '../components/navMenu/Menu1'
 import Home from '../page/home'
 import Manage from '../page/manage'
 import userList from '../page/userList'
+import Login from '../page/login/Login'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   routes: [{
       path: "/",
       component: Index,
+      redirect: "/login",
       children: [{
         path: '/test1',
         name: 'test1',
@@ -78,11 +80,37 @@ export default new Router({
         path: '/menu1',
         name: 'menu1',
         component: Manage,
+        redirect: "userList",
         children:[{
           path: '/userList',
-          component: Datetime1,
+          component: Table1,
           meta: ['数据管理', '用户列表'],
         }]
-      }
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: Login
+      },
   ]
 }]})
+
+// router.beforeEach((to, from, next) => {
+//   debugger
+//   let name = to.name;
+//   let islogin =
+//     JSON.stringify(sessionStorage.get("isLogin")) == "{}" ? false : sessionStorage.get("isLogin");
+//   if (!islogin) {
+//     if (name === "login") {
+//       next();
+//     } else {
+//       router.push({
+//         name: "login"
+//       });
+//     }
+//   } else {
+//     next();
+//   }
+// });
+
+export default router;

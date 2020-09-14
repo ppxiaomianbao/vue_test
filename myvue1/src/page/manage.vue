@@ -52,7 +52,7 @@
 		computed: {
 			defaultActive: function(){
 				let path = this.$route.path;
-				this.$message(path);
+				//this.$message(path);
 				return path.replace('/', '');
 			}
 		},

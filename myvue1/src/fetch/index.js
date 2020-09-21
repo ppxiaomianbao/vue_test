@@ -1,6 +1,9 @@
 //倒入模块
 
 import axios from 'axios'
+import {
+  Message
+} from 'element-ui'
 export default function fetch(options) {
   // var baseURLStr = window.g.SERVICE_CONTEXT_PATH;
   return new Promise((resolve, reject) => {
@@ -45,24 +48,24 @@ export default function fetch(options) {
             yescount
           });
           return false
-        } else if (code === '201') {
+        } else if (code === 201) {
           resolve({
             code,
           message,
           respData,
           });
           return false
-        } else if (code === '401') {
+        } else if (code === 401) {
           // router.replace({
           //   path: '/login'
           // })
-        } else if (code === '404') {
+        } else if (code === 404) {
           resolve({
             code,
           message,
           respData,
           });
-        } else if (code === '-1') {
+        } else if (code === -1) {
           resolve({
             code,
             message,
@@ -83,7 +86,7 @@ export default function fetch(options) {
           let resError = error.response;
           let resCode = resError.status;
           let resMsg = error.message;
-          this.$message.error('操作失败！错误原因' + resMsg);
+          Message.error('操作失败！错误原因' + resMsg);
           reject({
             code: resCode,
             message: resMsg
